@@ -6,7 +6,7 @@
         <ToolbarItem Text="Add"
                      Order="Primary"
                      Priority="0"
-                     Command="{Binding TradeCommad}">
+                     Command="{Binding TradeCommand}">
             
         </ToolbarItem>
     </ContentPage.ToolbarItems>

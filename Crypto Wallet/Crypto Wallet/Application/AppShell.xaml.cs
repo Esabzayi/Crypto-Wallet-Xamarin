@@ -1,10 +1,7 @@
 ﻿
-using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
-using System.Reflection;
-using Crypto_Wallet;
 using Autofac;
+using Crypto_Wallet.Modules.AddTransactions;
 
 namespace Crypto_Wallet
 {
@@ -14,6 +11,8 @@ namespace Crypto_Wallet
         {
             InitializeComponent();
             BindingContext = App.Container.Resolve<AppShellViewModel>();
+
+            Routing.RegisterRoute("AddTransactionViewModel", typeof(AddTransactionView));
         }
     }
 }

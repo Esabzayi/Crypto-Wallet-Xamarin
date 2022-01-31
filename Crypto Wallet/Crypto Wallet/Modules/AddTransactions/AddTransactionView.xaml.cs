@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace Crypto_Wallet.Modules.AddTransactions
         public AddTransactionView()
         {
             InitializeComponent();
+            BindingContext = App.Container.Resolve<AddTransactionViewModel>();
         }
     }
 }

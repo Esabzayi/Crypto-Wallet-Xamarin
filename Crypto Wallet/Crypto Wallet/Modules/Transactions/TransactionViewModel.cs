@@ -1,6 +1,9 @@
 ﻿using Crypto_Wallet.Common.Base;
 using Crypto_Wallet.Common.Controllers;
 using Crypto_Wallet.Common.Models;
+using Crypto_Wallet.Common.Navigation;
+using Crypto_Wallet.Modules.AddTransactions;
+using Crypto_Wallet.Modules.Wallet;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,11 +16,13 @@ namespace Crypto_Wallet.Modules.Transactions
     public class TransactionViewModel : BaseViewModel
     {
         private IWalletController _walletController;
+        private INavigationService _navigationService;
         private string _filter = string.Empty;
 
-        public TransactionViewModel(IWalletController walletController)
+        public TransactionViewModel(IWalletController walletController , INavigationService navigationService)
         {
             _walletController = walletController;
+            _navigationService = navigationService;
             Transaction = new ObservableCollection<Transaction>();
         }
 
@@ -71,6 +76,12 @@ namespace Crypto_Wallet.Modules.Transactions
         {
             get => _isRefreshing;
             set { SetProperty(ref _isRefreshing, value); }
+        }
+
+        public ICommand TradeCommand { get => new Command(async () => await PerformNavigation()); }
+        private async Task PerformNavigation()
+        {
+            await _navigationService.PushAsync<AddTransactionViewModel>();
         }
     }
 }
