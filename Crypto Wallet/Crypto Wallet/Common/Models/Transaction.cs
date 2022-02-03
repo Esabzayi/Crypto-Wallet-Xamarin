@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Crypto_Wallet.Common.Database;
+using System;
 
 namespace Crypto_Wallet.Common.Models
 {
-    public class Transaction
+    public class Transaction: BaseDatabaseItem
     {
         public string Symbol { get; set; }
         public decimal Amount { get; set; }
